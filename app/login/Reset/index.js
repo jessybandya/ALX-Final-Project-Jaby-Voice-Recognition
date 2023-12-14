@@ -18,7 +18,7 @@ function Reset({setOpen}) {
     .then((querySnapshot) => {
       if (!querySnapshot.empty) {
         const config ={
-          url: 'https://jessybandya.github.io/AT-Hackathon-JabyAI-NextJs/login',
+          url: 'https://jessybandya.github.io/ALX-Final-Project-Jaby-Voice-Recognition/login',
           handleCodeInApp: true
       };
     

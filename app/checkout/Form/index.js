@@ -16,30 +16,52 @@ import {
   Input,
 } from "@material-tailwind/react";
 import Pay from './Pay';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 const Form = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [zipcode, setZipcode] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [open, setOpen] = useState(false);
 
   const handleCheckout = (e) => {
     e.preventDefault();
-    setOpen(true);
+    if(!firstName){
+      toast.error("First Name is required!", {
+        position: 'top-center'
+      })
+    }else if(!lastName){
+      toast.error("Last Name is required!", {
+        position: 'top-center'
+      })
+    }else if(!email){
+      toast.error("Email is required!", {
+        position: 'top-center'
+      })
+    }else if(!phone){
+      toast.error("Phone Number is required!", {
+        position: 'top-center'
+      })
+    }else if(!address){
+      toast.error("Address is required!", {
+        position: 'top-center'
+      })
+    }else{
+      setOpen(true);
+    }
   };
 
   return (
     <div className="bg-white p-4">
       <h2 className="text-lg font-semibold mb-4">Checkout Form</h2>
-      <form onSubmit={handleCheckout}>
+      <div>
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-gray-600 font-medium">First Name</label>
           <input
             type="text"
-            id="firstName"
             className="border border-gray-300 rounded px-3 py-2 w-full"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -50,7 +72,6 @@ const Form = () => {
           <label htmlFor="lastName" className="block text-gray-600 font-medium">Last Name</label>
           <input
             type="text"
-            id="lastName"
             className="border border-gray-300 rounded px-3 py-2 w-full"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -58,45 +79,44 @@ const Form = () => {
           />
         </div>
         <div className="mb-4">
+        <label htmlFor="zipcode" className="block text-gray-600 font-medium">Email</label>
+        <input
+          type="email"
+          className="border border-gray-300 rounded px-3 py-2 w-full"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        </div>
+        <div className="mb-4">
+        <label htmlFor="zipcode" className="block text-gray-600 font-medium">Phone Number</label>
+        <input
+          type="text"
+          className="border border-gray-300 rounded px-3 py-2 w-full"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+        />
+      </div>
+        <div className="mb-4">
           <label htmlFor="address" className="block text-gray-600 font-medium">Address</label>
-          <input
-            type="text"
-            id="address"
-            className="border border-gray-300 rounded px-3 py-2 w-full"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="city" className="block text-gray-600 font-medium">City</label>
-          <input
-            type="text"
-            id="city"
-            className="border border-gray-300 rounded px-3 py-2 w-full"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="zipcode" className="block text-gray-600 font-medium">Zip Code</label>
-          <input
-            type="text"
-            id="zipcode"
-            className="border border-gray-300 rounded px-3 py-2 w-full"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            required
-          />
+          <GooglePlacesAutocomplete
+          apiKey="AIzaSyBx9RADC89Q3m0kDsA9PO5GuhhJyUyym3I"
+          selectProps={{
+          placeholder: 'Choose address...',
+          name:"address",
+          inputValue:address['address'],
+          onInputChange : (e)=>{setAddress({...address, ['address']: e})},
+          // onChange:(place) => {handleHomeLatLong(place.label); setErrorAddressHome(false);}
+          }}
+       />
         </div>
         <button
-          type="submit"
+          onClick={handleCheckout}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Buy Via M-Pesa (Ksh. 1)
         </button>
-      </form>
+      </div>
 
       <Dialog
 size="xs"
@@ -117,7 +137,7 @@ style={{zIndex:9999}}
       M-Pesa
     </Typography>
   </CardHeader>
-   <Pay setOpen={setOpen}/>
+   <Pay setOpen={setOpen} phone={phone} firstName={firstName} lastName={lastName} email={email} />
 </Card>
 </Dialog>
     </div>

@@ -1,113 +1,131 @@
-import Image from 'next/image'
+'use client'
 
-export default function Home() {
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Button } from '@material-tailwind/react';
+
+function Home(){
+  const pageTitle = "Welcome to Sample Repos Web";
+  const pageDescription = "Discover a range of repositories";
+  const imageUrl = "https://flowbite.com/docs/images/logo.svg";
+  
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+
+        {/* Open Graph meta tags */}
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+      </Helmet>
+      <div
+        className="bg-cover bg-center h-screen p-3"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8)), url('https://androidkenya.com/wp-content/uploads/2023/02/safaricom_m-pesa_banner.jpg')",
+          marginBottom: -70,
+        }}
+      >
+        {" "}
+        <div className="flex flex-col justify-center items-center h-full text-white">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl font-extrabold mb-4"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <center>
+              <img
+                src="https://flowbite.com/docs/images/logo.svg"
+                className="h-12 App-logo"
+                alt="Jaby Logo"
+              />{" "}
+            </center>
+            Welcome to My Repo Store
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="text-lg text-center"
+          >
+            Buy and pay for repos easily via{" "}
+            <span style={{ fontWeight: "bold", color: "#2EFF2E" }}>M-Pesa</span>{" "}
+            right within our platform.
+            <center
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src="https://testrigor.com/wp-content/uploads/2023/04/nextjs-logo-square.png"
+                style={{ height: 45 }}
+                alt="NextJS Logo"
+              />
+              <img
+                src="https://w7.pngwing.com/pngs/79/518/png-transparent-js-react-js-logo-react-react-native-logos-icon-thumbnail.png"
+                style={{ height: 45 }}
+                alt="ReactJS Logo"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                style={{ height: 45 }}
+                alt="JS Logo"
+              />
+              <img
+                src="https://image.pngaaa.com/388/3920388-middle.png"
+                style={{ height: 45 }}
+                alt="Tailwind Css Logo"
+              />
+              <img
+                src="https://w7.pngwing.com/pngs/761/513/png-transparent-material-ui-logo.png"
+                style={{ height: 45 }}
+                alt="MUI Logo"
+              />
+              <img
+                src="https://img.stackshare.io/service/7374/react-redux.png"
+                style={{ height: 45 }}
+                alt="Persist Redux Logo"
+              />
+              <img
+                src="https://www.seekpng.com/png/detail/83-833988_kenyas-leading-mobile-network-operator-and-provider-fiverr.png"
+                style={{ height: 45 }}
+                alt="Mpesa Logo"
+              />
+              <img
+                src="https://e7.pngegg.com/pngimages/105/663/png-clipart-firebase-cloud-messaging-mobile-backend-as-a-service-software-developer-android-angle-text-thumbnail.png"
+                style={{ height: 45 }}
+                alt="Firebase Logo"
+              />
+              <img
+                src="https://cdn-images-1.medium.com/max/710/0*Z-jwqyt2k8NbHaQe.png"
+                style={{ height: 45 }}
+                alt="Framer-Motion Logo"
+              />
+            </center>
+            <center className="mt-10">
+              <Link href="/shop/1">
+                <Button color="blue">Shop My Repos</Button>
+              </Link>
+            </center>
+          </motion.p>
         </div>
       </div>
+    </div>
+  );
+};
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;

@@ -110,7 +110,7 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
   >
    <MenuItem onClick={() => setIsNavOpen(false)} className="flex items-center gap-2 lg:rounded-full">
    {React.createElement(GiftIcon, { className: "h-[18px] w-[18px]" })}{" "}
-   My Orders
+   Learn
  </MenuItem>
   </Typography>
 
@@ -122,9 +122,6 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
     handler={handleOpen}
   >
   <center>
-  <Button fullWidth color="blue">
-  My Orders  
-  </Button>
   </center>
     <DialogBody divider
     style={{
@@ -328,7 +325,9 @@ const sentimCheck = (text) => {
 const submitCommentFun = (message, commentResult, finalResult) => {
   setLoading(true)
   if(message === ''){
-  toast.error("Kindly leave a comment!")
+  toast.error("Kindly leave a comment!", {
+    position: "top-center",
+  })
   setLoading(false)
  }else{
  db.collection("feedbacks").add({
@@ -346,6 +345,12 @@ const submitCommentFun = (message, commentResult, finalResult) => {
  )
 }
 }
+
+const date = new Date;
+let hours = date.getHours();
+
+let status = (hours < 12)? "Good Morning" : (hours >= 12 && hours < 16)? "Good Afternoon" : (hours >= 16 && hours < 19)? "Good Evening" : (hours >= 19 && hours < 12)? "Good Night" : ((hours <= 12 && hours >= 12 ) ? "Good Morning" : "Good Night");
+
 
   return (
     <>
@@ -649,10 +654,10 @@ const submitCommentFun = (message, commentResult, finalResult) => {
   <ToastContainer />
   <Feedback />
   </DialogBody>
-  <DialogFooter className="space-x-2">
+  <DialogFooter>
   {authId &&(
    <>
-   <Textarea  value={message} rows={1} onChange={(e) => setMessage(e.target.value)} color="blue" label="Message" />
+   <Textarea  value={message} onChange={(e) => setMessage(e.target.value)} color="blue" label={`${status} ${currentUser?.name}, say sth...!`} />
 
    <Button onClick={() => sentimCheck(message)} variant="gradient" color="blue">
    {loading ? <div style={{display:'table', margin: 'auto'}}><Spinner color="white" /></div> : 'Submit Comment!'}

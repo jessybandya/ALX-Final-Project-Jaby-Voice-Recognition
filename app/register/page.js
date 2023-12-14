@@ -35,7 +35,7 @@ function Register() {
           var email = data.email
  
           const config ={
-              url: 'https://jessybandya.github.io/AT-Hackathon-JabyAI-NextJs/complete-registration',
+              url: 'https://jessybandya.github.io/ALX-Final-Project-Jaby-Voice-Recognition/complete-registration',
               handleCodeInApp: true
           }
   

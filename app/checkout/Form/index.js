@@ -122,7 +122,7 @@ size="xs"
 open={open}
 handler={() => setOpen(false)}
 className="bg-transparent shadow-none"
-style={{zIndex:99999}}
+style={{zIndex:9999}}
 >
 <ToastContainer/>
 

@@ -8,7 +8,11 @@ const TABLE_ROWS = [
     job: "Go To Home Page"
   },
   {
-    name: "Study",
+    name: "Back",
+    job: "Going back to previous page"
+  },
+  {
+    name: "learn",
     job: "Open Learn Modal"
   },
   {
@@ -42,6 +46,18 @@ const TABLE_ROWS = [
   {
     name: "Scroll Up",
     job: "Scroll Up Page"
+  },
+  {
+    name: "View (..product name...)",
+    job: "Open the named product page"
+  },
+  {
+    name: "Add",
+    job: "Add to cart the named product in its page"
+  },
+  {
+    name: "Checkout",
+    job: "Go to checkout page"
   },
 ];
  

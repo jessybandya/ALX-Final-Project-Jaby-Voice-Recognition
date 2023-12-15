@@ -129,7 +129,7 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
       overflowY: "auto",
     }}
     >
-     <Orders/>
+     <LearnTable/>
     </DialogBody>
     <DialogFooter>
       <Button

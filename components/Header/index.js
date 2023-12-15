@@ -82,6 +82,8 @@ const navListItems = [
 ];
  
 function NavList({ setIsNavOpen, handleOpen, size }) {
+  const [openQuote, setOpenQuote] = React.useState(false);
+  const handleOpenQuote = () => setOpenQuote(!openQuote);
 
   return (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
@@ -106,20 +108,18 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
     variant="small"
     color="blue-gray"
     className="font-normal"
-    onClick={() => handleOpen("lg")}
+    onClick={() => setOpenQuote(true)}
   >
-   <MenuItem onClick={() => setIsNavOpen(false)} className="flex items-center gap-2 lg:rounded-full">
+   <MenuItem onClick={() => setOpenQuote(true)} className="flex items-center gap-2 lg:rounded-full">
    {React.createElement(GiftIcon, { className: "h-[18px] w-[18px]" })}{" "}
    Learn
  </MenuItem>
   </Typography>
 
     <DialogTailwind
-    open={
-      size === "lg"
-    }
-    size={size || "md"}
-    handler={handleOpen}
+    size='lg'
+    open={openQuote} handler={handleOpenQuote} onClose={() => setOpenQuote(false)}
+    
   >
   <center>
   </center>

@@ -106,7 +106,6 @@ const Form = () => {
           name:"address",
           inputValue:address['address'],
           onInputChange : (e)=>{setAddress({...address, ['address']: e})},
-          // onChange:(place) => {handleHomeLatLong(place.label); setErrorAddressHome(false);}
           }}
        />
         </div>

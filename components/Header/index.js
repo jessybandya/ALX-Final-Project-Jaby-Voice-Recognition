@@ -118,8 +118,7 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
 
     <DialogTailwind
     size='lg'
-    open={openQuote} handler={handleOpenQuote} onClose={() => setOpenQuote(false)}
-    
+    open={openQuote} handler={handleOpenQuote} onClose={() => setOpenQuote(false)}    
   >
   <center>
   </center>
@@ -135,7 +134,7 @@ function NavList({ setIsNavOpen, handleOpen, size }) {
       <Button
         variant="gradient"
         color="red"
-        onClick={() => handleOpen(null)}
+        onClick={() => setOpenQuote(false)}
       >
         <span>Close</span>
       </Button>

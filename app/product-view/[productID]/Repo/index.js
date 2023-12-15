@@ -94,10 +94,12 @@ function Repo({ allData }) {
   }}
   >
   
-  <Card className="w-96" style={{
+  <Card style={{
     display: 'table',
     margin:'auto',
-    marginTop:50
+    marginTop:50,
+    width:'100%',
+    maxWidth: 350
   }}>
   <div className="p-4 sm:p-6">
   <div className="flex items-center">

@@ -100,7 +100,7 @@ const Form = () => {
         <div className="mb-4">
           <label htmlFor="address" className="block text-gray-600 font-medium">Address</label>
           <GooglePlacesAutocomplete
-          apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
+          apiKey={`${secrets.NEXT_PUBLIC_GOOGLE_API_KEY}`}
           selectProps={{
           placeholder: 'Choose address...',
           name:"address",

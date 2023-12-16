@@ -1,6 +1,6 @@
 'use client'
 
-import { auth, db } from '@components/firebase'
+import { auth, collection, db, getDocs, query, where } from '@components/firebase'
 import { Button, Card, CardBody, CardFooter, CardHeader, Input, Spinner, Typography } from '@material-tailwind/react';
 import Link from 'next/link'
 import React from 'react'
@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import { useForm } from "react-hook-form";
+import { sendSignInLinkToEmail } from 'firebase/auth';
 
 function Register() {
     const [loading,setLoading] = useState(false)
@@ -20,42 +21,53 @@ function Register() {
     } = useForm();
 
 
-    const onSubmit = (data)=>{
+    const onSubmit = async(data)=>{
       setLoading(true)
 
 
-      db.collection('users').where("email", "==", data.email).get().then((resultSnapShot) => {
-         if (resultSnapShot.docs.length > 0) {
-          setLoading(false)
-          Swal.fire({
-            text: `Email already exists!`,
-            icon: 'error', 
-          })
-         }else{
-          var email = data.email
- 
-          const config ={
-              url: 'https://jessybandya.github.io/ALX-Final-Project-Jaby-Voice-Recognition/complete-registration',
-              handleCodeInApp: true
-          }
+      try {
+        const resultSnapshot = await getDocs(
+          query(collection(db, 'users'), where('email', '==', data.email))
+        );
   
-
-          auth.sendSignInLinkToEmail(email,config)
-          setLoading(false)
+        if (resultSnapshot.docs.length > 0) {
+          setLoading(false);
+          // Email already exists in the database
           Swal.fire({
-               text: `Email sent to ${email}. Click the link to complete your registration.`,
-               icon: 'success', 
-               showConfirmButton: false,
-               timer: 5000,             
-          })
-        //save user email in local storage
-        window.localStorage.setItem('emailForRegistration', email)
-      //clear state
-  reset()
-         }
-          
-
-      })
+            text: 'Email already exists!',
+            icon: 'error',
+          });
+        } else {
+          const email = data.email;
+  
+          const config = {
+            url:
+              'https://jessybandya.github.io/ALX-Final-Project-Jaby-Voice-Recognition/complete-registration',
+            handleCodeInApp: true,
+          };
+  
+          // Send sign-in link to the provided email
+          await sendSignInLinkToEmail(auth, email, config);
+  
+          setLoading(false);
+          // Email sent successfully
+          Swal.fire({
+            text: `Email sent to ${email}. Click the link to complete your registration.`,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 5000,
+          });
+  
+          // Save user email in local storage
+          window.localStorage.setItem('emailForRegistration', email);
+          // Clear state
+          reset();
+        }
+      } catch (error) {
+        setLoading(false);
+        // Handle error if sending email or database operation fails
+        console.error(error);
+      }
      }
 
 

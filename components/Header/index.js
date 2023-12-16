@@ -51,11 +51,11 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { LearnTable } from "./LearnTable";
 import { DataContext } from "@components/DataProvider";
-import { auth, db } from "@components/firebase";
 import Sentiment from 'sentiment';
 import NB from "naivebayes";
 import Feedback from "./Feedback";
-import Orders from "./Orders";
+import { auth, db, doc, onSnapshot, signOut } from "@components/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 
 function numberWithCommas(x) {
@@ -169,17 +169,31 @@ export default function Header() {
 
   const handleOpen = (value) => setSize(value);
 
-  React.useEffect(() => {
-    const unsub = auth.onAuthStateChanged((user) => {
-      unsub();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        db.collection('users').doc(`${user?.uid}`).onSnapshot((doc) => {
-          setCurrentUser(doc.data());
+        const userDocRef = doc(db, 'users', user.uid);
+        const unsubscribeSnapshot = onSnapshot(userDocRef, (doc) => {
+          if (doc.exists()) {
+            setCurrentUser(doc.data());
+          } else {
+            // Handle scenario when user document doesn't exist
+          }
         });
+
+        // Clean up the snapshot listener when component unmounts or when user logs out
+        return () => {
+          unsubscribeSnapshot();
+        };
       } else {
-        // not logged in
+        // Handle scenario when user is not logged in
       }
     });
+
+    // Clean up the auth state listener when component unmounts
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const submitQuote = () => {
@@ -238,7 +252,7 @@ export default function Header() {
 
 const logout = () => {
   setIsMenuOpen(false);
-  auth?.signOut()
+  signOut(auth);
   Swal.fire({
     icon: "success",
     title: "Logged out successfully!",

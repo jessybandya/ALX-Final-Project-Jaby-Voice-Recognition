@@ -1,8 +1,9 @@
 'use client'
 
-import { auth, db } from '@components/firebase'
+import { auth, db, doc, setDoc } from '@components/firebase'
 import { Button, Card, CardBody, CardFooter, CardHeader, Input, Spinner, Typography } from '@material-tailwind/react';
 import { updateAuthId } from '@redux/dataSlice'
+import { signInWithEmailLink } from 'firebase/auth';
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import React from 'react'
@@ -42,9 +43,6 @@ function CompleteRegistration() {
         return () => unsubscribe()
       }, [])
 
-      useEffect(()=>{
-        setEmail(window.localStorage.getItem("emailForRegistration"));
-     }, [])
 
     const signUp = async() =>{
         setLoading(true)
@@ -60,48 +58,51 @@ function CompleteRegistration() {
             })
             setLoading(false)
         }else{
-            try{
-                const result = await auth.signInWithEmailLink(
-                    email, 
-                    window.location.href
-                    );
-                
-                if(result.user.emailVerified){
-                    //remove user email from localstaorage
-                    //get user id token
-                    window.localStorage.removeItem("emailForRegistration");
-                    let user = auth.currentUser
-                    await user.updatePassword(password);    
-                    await db.collection('users').doc(user.uid).set({
-                        uid: user.uid,
-                        name: name,
-                        email: user.email,
-                        profilePhoto: "https://kisumucodl.uonbi.ac.ke/sites/default/files/2020-08/University_Of_Nairobi_Towers.jpg",
-                        timestamp: Date.now()
-                      });  
-                    Swal.fire({
-                        title: 'Signed Up Successfully!',
-                        text: 'Welcome to Jaby AI!',
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'OK',
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          // User clicked "OK"
-                          // Redirect to the home page and refresh
-                          setLoading(false);
-                          history.push('/');
-                          window.location.reload(); // Reload the page
-                        }
-                      });
+          try {
+            const result = await signInWithEmailLink(auth, email, window.location.href);
+      
+            if (result.user.emailVerified) {
+              // Remove user email from localStorage
+              window.localStorage.removeItem('emailForRegistration');
+      
+              let user = auth.currentUser;
+      
+              // Update user password
+              await user.updatePassword(password);
+      
+              // Set user data in Firestore
+              await setDoc(doc(db, 'users', user.uid), {
+                uid: user.uid,
+                name: name,
+                email: user.email,
+                profilePhoto:
+                  'https://kisumucodl.uonbi.ac.ke/sites/default/files/2020-08/University_Of_Nairobi_Towers.jpg',
+                timestamp: Date.now(),
+              });
+      
+              // Display success message and redirect
+              Swal.fire({
+                title: 'Signed Up Successfully!',
+                text: 'Welcome to Jaby AI!',
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'OK',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // User clicked "OK"
+                  // Redirect to the home page and refresh
+                  setLoading(false);
+                  history.push('/');
+                  window.location.reload(); // Reload the page
                 }
-                
-                }catch(error){
-                  setLoading(false)
-                //
-                toast.error(error.message)
+              });
             }
-        }
+          } catch (error) {
+            setLoading(false);
+            // Handle error if email verification or database update fails
+            toast.error(error.message);
+          }
+        };
     }
 
     const pageTitle = "Complete Registration Page | Jaby";
@@ -150,7 +151,7 @@ function CompleteRegistration() {
     <Input
     color="blue"
     value={email}
-    
+    onChange={(e) => setEmail(e.target.value)}
     label="Email" size="lg" />
     <Input
     color="blue"

@@ -1,5 +1,4 @@
 'use client'
-import { auth, db, facebookProvider, googleProvider } from '@components/firebase'
 import { updateAuthId, updatetest } from '@redux/dataSlice'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -31,6 +30,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleButton from 'react-google-button'
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { auth, db, doc, googleAuthProvider, setDoc } from '@components/firebase'
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -62,7 +63,7 @@ function Login() {
       return () => unsubscribe()
     }, [])
 
-    const login = () =>{
+    const login = async() =>{
         setLoading(true)
        if(!email){
         toast.error('Email is required!',{
@@ -75,141 +76,85 @@ function Login() {
         })
         setLoading(false)
     }else{
-        setLoading(true)
-        db.collection('users').where('email', '==', email).get()
-        .then((querySnapshot) => {
-          if (!querySnapshot.empty) {
-            auth.signInWithEmailAndPassword(email,password)
-            .then((auth) =>{
-              setLoading(false)
-                history.push('/')
-                Swal.fire({
-                  title: 'Signed In Successfully!',
-                  text: 'Welcome back to Jaby AI!',
-                  icon: 'success',
-                  showCancelButton: false,
-                  confirmButtonText: 'OK',
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    // User clicked "OK"
-                    // Redirect to the home page and refresh
-                    setLoading(false);
-                    history.push('/');
-                    window.location.reload(); // Reload the page
-                  }
-                });
-            })
-            .catch((e) =>{
-                    toast.error("Invalid Password Entered!", {
-                      position: "top-center",
-                    })     
-                  setLoading(false)     
-            })
-          } else {
-            // User with this email doesn't exist in the collection
-            // Do other tasks or handle the situation accordingly
-            // For example, you can display an error message using Swal.fire
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Failed',
-              text: 'User with this email does not exist.',
-            });
+      setLoading(true);
+      try {
+        await signInWithEmailAndPassword(auth, email, password).then((auth) => {
+          dispatch(updateAuthId(auth?.user?.uid));
+          Swal.fire({
+            title: 'Signed In Successfully!',
+            text: 'Welcome back to Jaby AI!',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'OK',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // User clicked "OK"
+              // Redirect to the home page and refresh
+              setLoading(false);
+              window.location.reload(); // Reload the page
+            }
+          });
+          history.push('/');
+        });
+      } catch (err) {
+        console.error(err);
+        toast.error(err.message, {
+          position: "top-center",
+        })   
+        setLoading(false); 
+      }
+     
+    }
+    }
+
+
+
+    const googleLogin = async () => {
+      try {
+        const result = await signInWithPopup(auth, googleAuthProvider);
+        const { user } = result;
+        const idTokenResult = await user.getIdTokenResult();
+  
+        dispatch({
+          type: 'LOGGED_IN_USER',
+          payload: {
+            email: user.email,
+            token: idTokenResult.token,
+          },
+        });
+  
+        dispatch(updateAuthId(`${user?.uid}`));
+  
+        await setDoc(doc(db, 'users', user?.uid), {
+          uid: user?.uid,
+          name: user?.displayName,
+          email: user?.email,
+          profilePhoto: user?.photoURL,
+          timestamp: Date.now(),
+        });
+        Swal.fire({
+          title: 'Signed In Successfully!',
+          text: 'Welcome back to Jaby AI!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'OK',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // User clicked "OK"
+            // Redirect to the home page and refresh
+            setLoading(false);
+            window.location.reload(); // Reload the page
           }
-          setLoading(false)
-        })
-    }
-    }
-
-
-
-    const googleLogin = async () =>{
-      auth
-      .signInWithPopup(googleProvider)
-      .then( async(result)=>{
-       const {user} = result;
-       const idTokenResult = await user.getIdTokenResult();
-       dispatch({
-        type: 'LOGGED_IN_USER',
-        payload: {
-          email: user.email,
-          token: idTokenResult.token,
-        },
-
-      })
-      dispatch(updateAuthId(`${user?.uid}`))
-
-      }).then((s) => {
-        db.collection('users').doc(auth?.currentUser?.uid).set({
-          uid: auth?.currentUser?.uid,
-          name: auth?.currentUser?.displayName,
-          email: auth?.currentUser?.email,
-          profilePhoto: auth?.currentUser?.photoURL,
-          timestamp: Date.now()
-        })
-            .then((r) => {
-              Swal.fire({
-                title: 'Signed Up Successfully!',
-                text: 'Welcome to Jaby AI!',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'OK',
-              })
-              setLoading(false);
-                  history.push('/');
-            })
-
-    })
-      .catch((err) => {
+        });
+        history.push('/');
+      } catch (err) {
+        // Handle error if sign-in or database update fails
         toast.error(err.message, {
-          position: 'top-center'
-        })
-      })
-    }
+          position: 'top-center',
+        });
+      }
+    };
 
-
-    const facebookLogin = async () =>{
-      auth
-      .signInWithPopup(facebookProvider)
-      .then( async(result)=>{
-       const {user} = result;
-       const idTokenResult = await user.getIdTokenResult();
-       dispatch({
-        type: 'LOGGED_IN_USER',
-        payload: {
-          email: user.email,
-          token: idTokenResult.token,
-        },
-
-      })
-      dispatch(updateAuthId(`${user?.uid}`))
-
-      }).then((s) => {
-        db.collection('users').doc(auth?.currentUser?.uid).set({
-          uid: auth?.currentUser?.uid,
-          name: auth?.currentUser?.displayName,
-          email: auth?.currentUser?.email,
-          profilePhoto: auth?.currentUser?.photoURL,
-          timestamp: Date.now()
-        })
-            .then((r) => {
-              Swal.fire({
-                title: 'Signed Up Successfully!',
-                text: 'Welcome to Jaby AI!',
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'OK',
-              })
-              setLoading(false);
-                  history.push('/');
-            })
-
-    })
-      .catch((err) => {
-        toast.error(err.message, {
-          position: 'top-center'
-        })
-      })
-    }
 
     const pageTitle = "Login Page | Jaby";
     const pageDescription = "Discover a range of repositories";

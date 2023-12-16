@@ -2,19 +2,28 @@ import React, { useEffect, useState } from 'react'
 import Rating from '@mui/material/Rating';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Post from './Post';
-import { db } from '@components/firebase';
+import { query, collection, db, where, onSnapshot,  } from '@components/firebase';
 
 
 function Feedback() {
   const [posts, setPosts] = useState([])
+  
   useEffect(() => {
-    db.collection("feedbacks").where("commentValue", ">=", 0).onSnapshot(snapshot => {
-        setPosts(snapshot.docs.map(doc => ({
-            id: doc.id,
-            post: doc.data(),
-        })));
-    })
-}, []);
+    const q = query(collection(db, 'feedbacks'), where('commentValue', '>=', 0));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
+    });
+
+    // Clean up the listener when component unmounts
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <div>

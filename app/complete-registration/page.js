@@ -3,7 +3,7 @@
 import { auth, db, doc, setDoc } from '@components/firebase'
 import { Button, Card, CardBody, CardFooter, CardHeader, Input, Spinner, Typography } from '@material-tailwind/react';
 import { updateAuthId } from '@redux/dataSlice'
-import { signInWithEmailLink } from 'firebase/auth';
+import { signInWithEmailLink, updatePassword } from 'firebase/auth';
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import React from 'react'
@@ -60,26 +60,25 @@ function CompleteRegistration() {
         }else{
           try {
             const result = await signInWithEmailLink(auth, email, window.location.href);
-      
+        
             if (result.user.emailVerified) {
               // Remove user email from localStorage
               window.localStorage.removeItem('emailForRegistration');
-      
-              let user = auth.currentUser;
-      
+              
+              const user = auth.currentUser;
+              
               // Update user password
-              await user.updatePassword(password);
-      
+              await updatePassword(user, password);
+              
               // Set user data in Firestore
               await setDoc(doc(db, 'users', user.uid), {
                 uid: user.uid,
                 name: name,
                 email: user.email,
-                profilePhoto:
-                  'https://kisumucodl.uonbi.ac.ke/sites/default/files/2020-08/University_Of_Nairobi_Towers.jpg',
+                profilePhoto: 'https://kisumucodl.uonbi.ac.ke/sites/default/files/2020-08/University_Of_Nairobi_Towers.jpg',
                 timestamp: Date.now(),
               });
-      
+        
               // Display success message and redirect
               Swal.fire({
                 title: 'Signed Up Successfully!',
@@ -92,17 +91,17 @@ function CompleteRegistration() {
                   // User clicked "OK"
                   // Redirect to the home page and refresh
                   setLoading(false);
-                  history.push('/');
                   window.location.reload(); // Reload the page
                 }
               });
             }
+            history.push('/');
           } catch (error) {
             setLoading(false);
             // Handle error if email verification or database update fails
             toast.error(error.message);
           }
-        };
+        }
     }
 
     const pageTitle = "Complete Registration Page | Jaby";

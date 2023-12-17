@@ -95,6 +95,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Author - Uwimana Jessy Bandya
+Authors
+- Uwimana Jessy Bandya (email:"jessybandya2@gmail.com")
+- kevin ngugi (email: "kevinngugi197@gmail.com")
 
 ---

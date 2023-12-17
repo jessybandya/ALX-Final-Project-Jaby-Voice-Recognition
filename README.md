@@ -3,6 +3,18 @@
 ## Project Overview
 
 Jaby Voice Recognition App is a cutting-edge e-commerce web application that redefines user interaction through advanced voice recognition technology. The app provides a seamless and hands-free shopping experience by allowing users to navigate and perform actions using natural voice commands.
+##Built with
+
+Built With
+Next.js
+React.js
+Tailwind CSS
+Material UI
+Material Tailwind
+Firebase
+Redux
+Framer Motion
+M-Pesa
 
 ## Features
 

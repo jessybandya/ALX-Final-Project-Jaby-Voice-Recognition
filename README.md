@@ -14,14 +14,14 @@ Effortlessly control the app with voice commands, making it easy to perform acti
 
 Utilizes a robust tech stack to ensure a smooth and responsive user experience:
 
-- **Next.js:** React framework for server-side rendering.
-- **React.js:** JavaScript library for building user interfaces.
-- **Tailwind CSS:** Utility-first CSS framework for styling.
-- **M-Pesa Integration:** Seamless mobile payments for users.
-- **Firebase:** Cloud-based platform for authentication and data storage.
-- **Framer Motion:** Animation library for creating delightful UI interactions.
-- **Flutterwave Integration:** Secure and reliable payment processing.
-- **React Redux:** State management for React applications.
+- Next.js: React framework for server-side rendering.
+- React.js: JavaScript library for building user interfaces.
+- Tailwind CSS: Utility-first CSS framework for styling.
+- M-Pesa Integration: Seamless mobile payments for users.
+- Firebase: Cloud-based platform for authentication and data storage.
+- Framer Motion: Animation library for creating delightful UI interactions.
+- Flutterwave Integration: Secure and reliable payment processing.
+- React Redux: State management for React applications.
 
 ### 3. E-Commerce Functionality
 
@@ -31,10 +31,10 @@ Explore and shop a diverse range of repositories with ease.
 
 #### Shopping Cart Management
 
-- **Add to Cart:** Add items to the shopping cart.
-- **Remove from Cart:** Remove specific items from the cart.
-- **Clear Cart:** Remove all items from the cart.
-- **View Cart:** Review and manage items in the shopping cart.
+- Add to Cart: Add items to the shopping cart.
+- Remove from Cart: Remove specific items from the cart.
+- Clear Cart: Remove all items from the cart.
+- View Cart: Review and manage items in the shopping cart.
 
 #### Checkout
 
@@ -45,6 +45,51 @@ Explore and shop a diverse range of repositories with ease.
 
 - **Add Reviews:** Share your thoughts and experiences by adding reviews about the site.
 - **Read Reviews:** Gain insights from other users' reviews to make informed decisions.
+
+
+## Challenges
+Browser Compatibility: Voice recognition may not be supported in all browsers.
+Voice Misinterpretation: Due to the inherent limitations of voice recognition technology, some words may be misinterpreted.
+Importance of Voice Recognition Apps
+Accessibility: Voice recognition apps make technology more accessible to people with disabilities, allowing them to interact with devices and software more effectively.
+
+Convenience: These apps provide a hands-free and eyes-free way to control devices, enhancing convenience in tasks like sending messages, setting reminders, and web searches.
+
+Productivity Boost: Voice recognition apps increase productivity by enabling quick text dictation, email composition, and document creation, especially in professional settings.
+
+
+
+## Screenshots
+
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/4a8efe26-5c2d-4a86-8a44-55b82d8b5b76)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/68e5cbf7-6abf-4520-82f4-3252f464ceb3)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/6eb956bb-e15d-44e7-8cbf-2df46d8a3d45)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/39f8e612-17f0-4f60-a967-9655df748382)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/02f6c2ed-391c-4668-8cb0-4602e47eaf86)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/5b825a59-bc8a-48e0-84ad-69b0e1c090cd)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/d2f19bd3-25d7-4730-ac46-7e33a4fab905)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/471b794d-baef-4e9d-8077-8a8b6699664e)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/ef624b41-2c43-4bb8-80e5-a2117cb312b2)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/1ee26000-7a8b-4e42-9add-ff2488ba04e1)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/760cc1e3-80d5-400f-9bc2-35e965bbee04)
+![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/f6592bdf-4f03-4630-8854-0a950c087329)
+
+
+
+## Contributing
+
+We welcome contributions to this project. Feel free to open issues and submit pull requests to help improve and enhance the functionality.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Author - Uwimana Jessy Bandya
+
+---
+
 
 ## Getting Started
 

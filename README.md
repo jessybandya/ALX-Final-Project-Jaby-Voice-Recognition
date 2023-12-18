@@ -115,16 +115,14 @@ Follow these steps to set up and run the project locally:
 
 ## Contributors
 
-- **Jessy Bandya**
+- **Jessy Bandya (Email:jessyBandya2@gmail.com)
 - **Kevin Ngugi** (Email: kevinngugi197@gmail.com)
 
 ## Learn More
 
 Explore the [Next.js Documentation](https://nextjs.org/docs) and [React.js Documentation](https://reactjs.org/docs) for in-depth information about the frameworks used in this project.
 
-## Contact
 
-For inquiries and collaboration, please contact Kevin Ngugi at kevinngugi197@gmail.com.
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

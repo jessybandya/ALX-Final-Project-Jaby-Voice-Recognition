@@ -115,7 +115,7 @@ Follow these steps to set up and run the project locally:
 
 ## Contributors
 
-- **Jessy Bandya (Email:jessyBandya2@gmail.com)
+- Jessy Bandya (Email:jessyBandya2@gmail.com)
 - **Kevin Ngugi** (Email: kevinngugi197@gmail.com)
 
 ## Learn More

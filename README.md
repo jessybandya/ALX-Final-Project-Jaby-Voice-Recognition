@@ -5,26 +5,30 @@
 Jaby Voice Recognition App is a cutting-edge e-commerce web application that redefines user interaction through advanced voice recognition technology. The app provides a seamless and hands-free shopping experience by allowing users to navigate and perform actions using natural voice commands.
 
 ## Built With
-https://nextjs.org/
-https://reactjs.org/Tailwind CSS
-https://tailwindcss.com/
-https://mui.com/Material Tailwind
-https://material-tailwind.com/
-https://firebase.google.com/Redux
-https://www.framer.com/motion/M-Pesa
-https://redux.js.org/
-https://developer.safaricom.co.ke/
+
+- [Next.js](https://nextjs.org/)
+- [React.js](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Material UI](https://mui.com/)
+- [Material Tailwind](https://material-tailwind.com/)
+- [Firebase](https://firebase.google.com/)
+- [Redux](https://redux.js.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [M-Pesa](https://developer.safaricom.co.ke/)
+
 
 ## Features
 
- 1. Voice-Activated Navigation
- 2.Registration and Login: Users can create accounts and log in securely.
- 3.Shopping: Explore and purchase repositories.
- 4.Cart Management: Users can add and remove items from their cart
- 5.Checkout: Seamless checkout process, including M-Pesa payment integration via Daraja API.
- 6.Voice Recognition: Voice search functionality, although compatibility may vary across browsers
+1. **Registration and Login:** Users can create accounts and log in securely.
+2. **Shopping:** Explore and purchase repositories.
+3. **Cart Management:** Users can add and remove items from their cart.
+4. **Checkout:** Seamless checkout process, including M-Pesa payment integration via Flutterwave.
+5. **Voice Recognition:** Voice search functionality, although compatibility may vary across browsers.
 
-Effortlessly control the app with voice commands, making it easy to perform actions such as navigating between pages, accessing learning materials, and managing the shopping cart.
+## Challenges
+
+1. **Browser Compatibility:** Voice recognition may not be supported in all browsers.
+2. **Voice Misinterpretation:** Due to the inherent limitations of voice recognition technology, some words may be misinterpreted.
 
 ### 2. Modern Tech Stack
 
@@ -33,7 +37,6 @@ Utilizes a robust tech stack to ensure a smooth and responsive user experience:
 - Next.js: React framework for server-side rendering.
 - React.js: JavaScript library for building user interfaces.
 - Tailwind CSS: Utility-first CSS framework for styling.
-- M-Pesa Integration: Seamless mobile payments for users.
 - Firebase: Cloud-based platform for authentication and data storage.
 - Framer Motion: Animation library for creating delightful UI interactions.
 - Flutterwave Integration: Secure and reliable payment processing.
@@ -95,6 +98,10 @@ Productivity Boost: Voice recognition apps increase productivity by enabling qui
 ## Contributing
 
 We welcome contributions to this project. Feel free to open issues and submit pull requests to help improve and enhance the functionality.
+
+## Future Features
+
+-We are planning to train the website with authenticated email with specific voice.
 
 ## License
 

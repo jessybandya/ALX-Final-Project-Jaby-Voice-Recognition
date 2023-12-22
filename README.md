@@ -89,18 +89,22 @@ Productivity Boost: Voice recognition apps increase productivity by enabling qui
 
 ## Screenshots
 
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/4a8efe26-5c2d-4a86-8a44-55b82d8b5b76)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/68e5cbf7-6abf-4520-82f4-3252f464ceb3)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/6eb956bb-e15d-44e7-8cbf-2df46d8a3d45)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/39f8e612-17f0-4f60-a967-9655df748382)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/02f6c2ed-391c-4668-8cb0-4602e47eaf86)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/5b825a59-bc8a-48e0-84ad-69b0e1c090cd)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/d2f19bd3-25d7-4730-ac46-7e33a4fab905)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/471b794d-baef-4e9d-8077-8a8b6699664e)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/ef624b41-2c43-4bb8-80e5-a2117cb312b2)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/1ee26000-7a8b-4e42-9add-ff2488ba04e1)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/760cc1e3-80d5-400f-9bc2-35e965bbee04)
-![image](https://github.com/jessybandya/AT-Hackathon-JabyAI-NextJs/assets/69303168/f6592bdf-4f03-4630-8854-0a950c087329)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/fcde406f-1699-4341-a000-cc998f3bbd6a)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/ad267e60-8106-4f32-bd6e-dad5d269eb94)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/1201363d-4fe3-4595-b4ee-dbeaf3a88a84)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/1e56ab1d-b61a-423c-a0ec-03bad138f45f)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/e3c58fc6-adf6-41b7-a2c0-65c3bca5924e)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/ebdcede6-5ae3-4b2e-83ba-fe30a1a8ec3c)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/c681db43-4ee2-4a1d-be7c-c125d860cd75)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/3eddeb4a-cb88-49be-88e9-946ff46d47df)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/30936cd7-1a08-4efa-b340-df7a24aff7a6)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/94f657ea-3fe4-4b6d-9203-007d80bf7042)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/8a206b91-087f-4685-a7a4-366e4fa78743)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/bccf0bc2-7082-407d-b054-0a0010383929)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/d854288c-006a-4193-bdff-b06c2a395e54)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/b95c7762-a301-4239-9849-421f310055c6)
+![image](https://github.com/jessybandya/ALX-Final-Project-Jaby-Voice-Recognition/assets/69303168/055d4602-f788-459f-b49f-f4660629a547)
+
 
 
 

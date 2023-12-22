@@ -101,9 +101,9 @@ function Home(){
                 alt="Persist Redux Logo"
               />
               <img
-                src="https://www.seekpng.com/png/detail/83-833988_kenyas-leading-mobile-network-operator-and-provider-fiverr.png"
+                src="https://techuncode.com/wp-content/uploads/2023/09/FLUTTERWAVE-IMAGE-2.jpeg"
                 style={{ height: 45 }}
-                alt="Mpesa Logo"
+                alt="Flutterwave Logo"
               />
               <img
                 src="https://e7.pngegg.com/pngimages/105/663/png-clipart-firebase-cloud-messaging-mobile-backend-as-a-service-software-developer-android-angle-text-thumbnail.png"

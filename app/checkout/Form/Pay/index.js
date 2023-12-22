@@ -40,7 +40,7 @@ function Pay({setOpen, firstName, lastName, phone, email}) {
       };
 
       const config = {
-        public_key: "FLWPUBK-f8d0aacbffe32208f371c19595882b2d-X",
+        public_key: "",
         tx_ref: Date.now(),
         amount: 1,
         currency: "KES",

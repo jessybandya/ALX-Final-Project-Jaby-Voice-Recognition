@@ -15,15 +15,21 @@ Jaby Voice Recognition App is a cutting-edge e-commerce web application that red
 - [Redux](https://redux.js.org/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [M-Pesa](https://developer.safaricom.co.ke/)
+- [Flutterwave](https://flutterwave.com/)
+- Google API for search autocomplete
+- Sentiment Analysis for Reviews
+- GitHub API for fetching repositories
 
 
 ## Features
 
-1. **Registration and Login:** Users can create accounts and log in securely.
+1. **Registration and Login:** Users can create accounts through verification by sending link for to complete registration into their mail inbox.
 2. **Shopping:** Explore and purchase repositories.
 3. **Cart Management:** Users can add and remove items from their cart.
 4. **Checkout:** Seamless checkout process, including M-Pesa payment integration via Flutterwave.
 5. **Voice Recognition:** Voice search functionality, although compatibility may vary across browsers.
+6. **Google Search Autocomplete:** Improved search experience with autocomplete using Google API.
+7. **Sentiment Analysis for Reviews:** Reviews undergo sentiment analysis, and only positive comments are displayed.
 
 ## Challenges
 
@@ -40,6 +46,9 @@ Utilizes a robust tech stack to ensure a smooth and responsive user experience:
 - Firebase: Cloud-based platform for authentication and data storage.
 - Framer Motion: Animation library for creating delightful UI interactions.
 - Flutterwave Integration: Secure and reliable payment processing.
+- Google API: Enables search autocomplete for enhanced user experience.
+- Sentiment Analysis: Identifies and filters positive comments for improved user feedback.
+- GitHub API: Fetches repositories for shopping from the GitHub user "jessybandya".
 - React Redux: State management for React applications.
 
 ### 3. E-Commerce Functionality
@@ -58,12 +67,12 @@ Explore and shop a diverse range of repositories with ease.
 #### Checkout
 
 - **Proceed to Checkout:** Initiate the checkout process.
-- **Make an Order via M-Pesa:** Complete the order by making a secure payment through M-Pesa.
+- **Make an Order via M-Pesa(Flutterwave):** Complete the order by making a secure payment through M-Pesa.
 
 ### 4. User Reviews
 
 - **Add Reviews:** Share your thoughts and experiences by adding reviews about the site.
-- **Read Reviews:** Gain insights from other users' reviews to make informed decisions.
+- **Display Positive Reviews Only:** After sentiment analysis, only positive comments are displayed to users.
 
 
 ## Challenges
@@ -101,7 +110,8 @@ We welcome contributions to this project. Feel free to open issues and submit pu
 
 ## Future Features
 
--We are planning to train the website with authenticated email with specific voice.
+- Implement specific voice authentication linked to registered emails for enhanced security.
+- Allow voice recognition for input fields to facilitate hands-free interaction.
 
 ## License
 
